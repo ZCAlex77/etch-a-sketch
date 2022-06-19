@@ -1,6 +1,11 @@
 window.onload = () =>{
   const container = document.querySelector('#container'),
         gridSize = document.querySelector('#grid-size-change');
+  let drawColor = '#000';
+
+  const addTileEvent = tiles =>{
+    tiles.forEach(tile => tile.addEventListener('mouseover', function(){this.style.background = drawColor;}));
+  }
 
   const createTiles = (numOfTiles) =>{
     container.innerHTML = '';
@@ -9,10 +14,11 @@ window.onload = () =>{
     for(let i = 0; i < numOfTiles*numOfTiles; i++){
       let tile = document.createElement('div');
       tile.classList.add('tile');
-      tile.style.background = `rgb(${Math.floor(Math.random()*255)}, ${Math.floor(Math.random()*255)}, ${Math.floor(Math.random()*255)})`;
+      tile.addEventListener('hover', function(){this.style.background = 'drawColor';});
       container.appendChild(tile);
     }
     gridSize.setAttribute('data-size', `${numOfTiles}x${numOfTiles}`);
+    addTileEvent(Array.from(document.querySelectorAll('.tile')));
   }
 
   gridSize.addEventListener('change', ev => createTiles(ev.target.value));
