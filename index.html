@@ -11,13 +11,16 @@
     body{background: var(--purple); display: flex; padding: 2rem; align-items: center; justify-content: center; gap: 1rem; height: 100vh; gap: 1rem; position: relative;}
     :where(body > div){height: 100%; background: white;}
     input, button{cursor: pointer;}
-    input[type="color"]{width: 50px; height: 50px;}
+    input[type="color"]{width: 50px; height: 25px;}
     .options{padding: 2rem; display: flex; flex-direction: column; align-items: center; border-radius: 10px; background: var(--orange); color: #fff;}
     .options button{background: var(--purple); border-radius: 10px; padding: .5rem; border: 0; color: #fff; font-size: 1.2rem; margin-top: 1rem; width: 100%;}
     .options button:hover{background: #fff; color: var(--purple); outline: 2px solid var(--purple);}
     .options label{font-size: 1.2rem; margin: 1rem 0 .5rem 0;}
-    .container{aspect-ratio: 1/1; outline: 2px solid black;}
-    input[type="range"]{-webkit-appearance: none; height: 25px; padding: 0 1rem; position: absolute; width: calc(100vh - 4rem);}
+    #container{aspect-ratio: 1/1; outline: 2px solid black; display: grid;}
+    .tile{aspect-ratio: 1/1;}
+    #grid-size-change{-webkit-appearance: none; height: 25px; padding: 0 1rem; position: absolute; width: calc(100vh - 4rem);}
+    #grid-size-change::-webkit-slider-thumb{-webkit-appearance: none; background: var(--orange); width: 25px; height: 25px; border-radius: 0px;}
+    #grid-size-change::after{content: attr(data-size); position: absolute; font-size: 3rem; top: -4rem; left: 50%; transform: translateX(-50%); color: white;}
     .range{transform: rotateZ(90deg); height: 25px; width: 25px; align-self: flex-start;}
   </style>
 </head>
@@ -25,13 +28,12 @@
   <div class="options">
     <h1>Etch-a-sketch</h1>
     <button>Clear</button>
-    <button>Draw mode: <span>click</span></button>
-    <label for="col">Color:</label>
-    <input type="color" name="col" id="col" value="#fff">
+    <button>Color: <input type="color" name="col" id="col" value="#000000"></button>
   </div>
-  <div class="container"></div>
+  <div id="container"></div>
   <div class="range">
-    <input type="range" name="cells" id="cells" min="4" max="100" step="1" value="50">
+    <input data-size="20x20" id="grid-size-change" type="range" name="cells" id="cells" min="4" max="100" step="1" value="20">
   </div>
+  <script src="main.js"></script>
 </body>
 </html>
