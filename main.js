@@ -4,10 +4,8 @@ window.onload = () =>{
 
   const createTiles = (numOfTiles) =>{
     container.innerHTML = '';
-    let fr = '1fr ';
-    let gridTemplate = fr.repeat(numOfTiles);
-    container.style.gridTemplateRows = gridTemplate;
-    container.style.gridTemplateColumns = gridTemplate;
+    container.style.gridTemplateRows = "1fr ".repeat(numOfTiles);
+    container.style.gridTemplateColumns = "1fr ".repeat(numOfTiles);
     for(let i = 0; i < numOfTiles*numOfTiles; i++){
       let tile = document.createElement('div');
       tile.classList.add('tile');
