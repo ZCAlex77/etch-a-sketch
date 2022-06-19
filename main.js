@@ -7,6 +7,10 @@ window.onload = () =>{
     tiles.forEach(tile => tile.addEventListener('mouseover', function(){this.style.background = drawColor;}));
   }
 
+  const clearTiles = () =>{
+    Array.from(document.querySelectorAll('.tile')).forEach(tile => tile.style.background = '#fff');
+  }
+
   const createTiles = (numOfTiles) =>{
     container.innerHTML = '';
     container.style.gridTemplateRows = "1fr ".repeat(numOfTiles);
@@ -22,6 +26,8 @@ window.onload = () =>{
   }
 
   gridSize.addEventListener('change', ev => createTiles(ev.target.value));
+  document.querySelector('#clear').addEventListener('click', clearTiles);
+  document.querySelector('#col').addEventListener('change', ev => drawColor = ev.target.value);
 
   createTiles(20);
 }
