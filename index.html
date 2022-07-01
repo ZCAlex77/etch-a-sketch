@@ -13,7 +13,7 @@
     input, button{cursor: pointer;}
     input[type="color"]{width: 50px; height: 25px;}
     .options{padding: 2rem; display: flex; flex-direction: column; align-items: center; border-radius: 10px; background: var(--orange); color: #fff;}
-    .options button{background: var(--purple); border-radius: 10px; padding: .5rem; border: 0; color: #fff; font-size: 1.2rem; margin-top: 1rem; width: 100%;}
+    .options button{background: var(--purple); border-radius: 10px; padding: .5rem; border: 0; color: #fff; font-size: 1rem; margin-top: 1rem; width: 100%;}
     .options button:hover{background: #fff; color: var(--purple); outline: 2px solid var(--purple);}
     .options label{font-size: 1.2rem; margin: 1rem 0 .5rem 0;}
     #container{aspect-ratio: 1/1; outline: 2px solid black; display: grid; gap: 0;}
@@ -27,6 +27,7 @@
   <div class="options">
     <h1>Etch-a-sketch</h1>
     <h4>By Alexandru Zmău</h4>
+    <button id="rainbow">Rainbow mode: OFF</button>
     <button id="clear">Clear</button>
     <button>Color: <input type="color" name="col" id="col" value="#000000"></button>
   </div>

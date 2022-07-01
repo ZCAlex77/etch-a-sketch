@@ -1,10 +1,23 @@
 window.onload = () =>{
   const container = document.querySelector('#container'),
         gridSize = document.querySelector('#grid-size-change');
-  let drawColor = '#000';
+
+  let drawColor = '#000', rainbow = false, lastColor = null;
+
+  const generateColor = () => `rgb(${Math.floor(Math.random()*255)}, ${Math.floor(Math.random()*255)}, ${Math.floor(Math.random()*255)})`;
+  
+  const toggleRainbow = () =>{
+    rainbow = !rainbow;
+    if(!rainbow) drawColor = lastColor;
+    else lastColor = drawColor;
+    document.querySelector('#rainbow').textContent = `Rainbow mode: ${rainbow?'ON':'OFF'}`;
+  }
 
   const addTileEvent = tiles =>{
-    tiles.forEach(tile => tile.addEventListener('mouseover', function(){this.style.background = drawColor;}));
+    tiles.forEach(tile => tile.addEventListener('mouseover', function(){
+      if(rainbow) drawColor = generateColor();
+      this.style.background = drawColor;
+    }));
   }
 
   const clearTiles = () =>{
@@ -26,6 +39,7 @@ window.onload = () =>{
   }
 
   gridSize.addEventListener('change', ev => createTiles(ev.target.value));
+  document.querySelector('#rainbow').addEventListener('click', toggleRainbow);
   document.querySelector('#clear').addEventListener('click', clearTiles);
   document.querySelector('#col').addEventListener('change', ev => drawColor = ev.target.value);
 
